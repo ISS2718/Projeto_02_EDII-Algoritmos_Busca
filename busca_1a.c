@@ -38,8 +38,8 @@ int main(int argc, char const *argv[]){
     const int N = 50000;
     unsigned encontrados = 0;
 
-    int *entradas = ler_inteiros("inteiros_entrada.txt", N);
-    int *consultas = ler_inteiros("inteiros_busca.txt", N);
+    int *entradas = ler_inteiros("dados/inteiros_entrada.txt", N);
+    int *consultas = ler_inteiros("dados/inteiros_busca.txt", N);
 
     // realiza busca sequencial
     inicia_tempo();
