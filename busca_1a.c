@@ -11,6 +11,10 @@ unsigned char typedef bool;
 #define TRUE  1
 #define FALSE 0
 
+int busca_simples(int entradas, int consultas){
+
+}
+
 int* ler_inteiros(const char * arquivo, const int n){
     FILE *f = fopen(arquivo, "r");
 
@@ -45,11 +49,7 @@ int main(int argc, char const *argv[]){
     inicia_tempo();
     for (int i = 0; i < N; i++) {
         // buscar o elemento consultas[i] na entrada
-        for (int j = 0; j < N; j++){
-            if(consultas[i] == entradas[j]){
-                encontrados++;
-            }
-        }
+
     }
     double tempo_busca = finaliza_tempo();
 
