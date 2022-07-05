@@ -58,11 +58,18 @@ int main(int argc, char const *argv[])
 
     int* entradas = ler_inteiros("dados/inteiros_entrada.txt", N);
     int* consultas = ler_inteiros("dados/inteiros_busca.txt", N);
+    
+    FILE * encontrados_trans = fopen("dados/encontrados_trans.txt","w");
     // realiza busca sequencia com realocação
     inicia_tempo();
+    int res = 0;
     for (int i = 0; i < N; i++) {
         // buscar o elemento consultas[i] na entrada
-        encontrados += busca_seq_trans(&entradas, consultas[i], N);
+        res = busca_seq_trans(&entradas, consultas[i], N);
+        encontrados += res;
+        if(res == 1){
+            fprintf(encontrados_trans, "%d\n", consultas[i]);
+        }
     }
     double tempo_busca = finaliza_tempo();
 
