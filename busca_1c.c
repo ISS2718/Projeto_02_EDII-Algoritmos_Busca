@@ -40,7 +40,7 @@ int busca_seq_trans (int ** entrada, int buscado, int n){
     //printf("Buscado: %d\n", buscado);
     for(int i=0; i<n; i++){
         if(buscado == (*entrada)[i]){
-            //printf("Encontrado na posicao %d\n", i);
+            //printf("Encontrado na posicao %d\n", i-1);
             if(i != 0){
                 (*entrada)[i] = (*entrada)[i-1];
                 (*entrada)[i-1] = buscado;
@@ -56,9 +56,8 @@ int main(int argc, char const *argv[])
     const int N = 50000;
     unsigned encontrados = 0;
 
-    int* entradas = ler_inteiros("inteiros_entrada.txt", N);
-    int* consultas = ler_inteiros("inteiros_busca.txt", N);
-
+    int* entradas = ler_inteiros("dados/inteiros_entrada.txt", N);
+    int* consultas = ler_inteiros("dados/inteiros_busca.txt", N);
     // realiza busca sequencia com realocação
     inicia_tempo();
     for (int i = 0; i < N; i++) {
