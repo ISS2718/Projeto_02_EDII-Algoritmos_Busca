@@ -82,22 +82,24 @@ int main(int argc, char const *argv[])
                 if(menor == 49874){
                     printf("%d %d\n", i, menor);
                 }
-                if(i == 40726){
-                    printf("%d troca com %d - menor: %d - i: %d\n",  entradas[i],  entradas[pos], menor, i);
-                }
+                
             }   
         }
-        
+        if(i == 40726){
+            printf( "antes %d troca com %d - menor: %d - i: %d\n",  entradas[i],  entradas[pos], menor, i);
+        }
         entradas[pos] = entradas[i];
         entradas[i] = menor;
+        if(i == 40726){
+            printf("%d troca com %d - menor: %d - i: %d\n",  entradas[i],  entradas[pos], menor, i);
+            
+        }
         int flag = 0;
         for(int j = 0; j<N; j++){
             if(entradas[j] == 49874){
                 flag = 1;
             }
         }
-        if(i == N-1 && flag)
-            printf("achou");
     }
     for(int j = 0; j<N; j++){
             if(entradas[j] == 49874){
