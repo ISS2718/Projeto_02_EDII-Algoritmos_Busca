@@ -76,7 +76,7 @@ int main(int argc, char const *argv[])
         int menor = entradas[i];
         int j, pos;
         for(j = i; j<N; j++){
-            if(entradas[j]< menor){
+            if(entradas[j]<= menor){
                 menor = entradas[j];
                 pos = j;
                 if(menor == 49874){

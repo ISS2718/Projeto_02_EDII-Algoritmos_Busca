@@ -34,6 +34,15 @@ double finaliza_tempo(){
     return ((double)(_fim - _ini)) / CLOCKS_PER_SEC;
 }
 
+int busca_simples(int **entrada, int buscado, int N){ //ter ponteiro para ponteiro como parametro deixo o algoritmo mais rapido
+    for (int j = 0; j < N; j++){
+        if(buscado == (*entrada)[j]){
+            return 1;
+        }
+    }
+    return 0;
+}
+
 int main(int argc, char const *argv[]){
     const int N = 50000;
     unsigned encontrados = 0;
@@ -43,14 +52,12 @@ int main(int argc, char const *argv[]){
 
     // realiza busca sequencial
     inicia_tempo();
+
     for (int i = 0; i < N; i++) {
         // buscar o elemento consultas[i] na entrada
-        for (int j = 0; j < N; j++){
-            if(consultas[i] == entradas[j]){
-                encontrados++;
-            }
-        }
+        encontrados = encontrados + busca_simples(&entradas, consultas[i], N);
     }
+
     double tempo_busca = finaliza_tempo();
 
     printf("Tempo de busca    :\t%fs\n", tempo_busca);
