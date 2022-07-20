@@ -66,6 +66,14 @@ unsigned h_mul(unsigned x, unsigned i, unsigned B)
     return  ((int) ((fmod(x * A, 1) * B) + i)) % B;
 }
 
+unsigned h_duplo (unsigned x, unsigned i, unsigned B) {
+   return (h_mul(x, i, B) + i * h_div(x, i, B))%B;
+}
+
+int insere_hash (string* hash, string s, unsigned B) {
+
+}
+
 int main(int argc, char const *argv[])
 {
     const int N = 50000;
@@ -80,7 +88,7 @@ int main(int argc, char const *argv[])
 
 
     // cria tabela hash com hash por hash duplo
-
+    string* hash = malloc(sizeof(string)*B);
     // inserção dos dados na tabela hash
     inicia_tempo();
     for (int i = 0; i < N; i++) {
