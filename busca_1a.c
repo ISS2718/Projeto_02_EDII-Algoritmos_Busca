@@ -1,3 +1,9 @@
+/*
+Joao Pedro Goncalves Ferreira 12731314
+Nicholas Estevao Pereira de Oliveira Rodrigues Braganca NUSP 12689616
+Isaac Santos Soares 12751713
+*/
+
 //Implemente um algoritmo que realize uma busca sequencial simples
 #include <stdio.h>
 #include <stdlib.h>
@@ -34,7 +40,7 @@ double finaliza_tempo(){
     return ((double)(_fim - _ini)) / CLOCKS_PER_SEC;
 }
 
-int busca_simples(int **entrada, int buscado, int N){ //ter ponteiro para ponteiro como parametro deixo o algoritmo mais rapido
+int busca_simples(int **entrada, int buscado, int N){ //ter ponteiro para ponteiro como parametro deixa o algoritmo mais rapido
     for (int j = 0; j < N; j++){
         if(buscado == (*entrada)[j]){
             return 1;
