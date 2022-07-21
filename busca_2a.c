@@ -72,6 +72,13 @@ void criar(string ** t, int B){
     }
 }
 
+void destruir(string ** t, int B){
+    for(int i = 0; i<B; i++){
+        free((*t)[i]);
+    }
+    free(*t);
+}
+
 int inserir_div(string ** t, int B, string k){
     int colisoes = 0;
     for(int i=0; i<B; i++){
@@ -183,14 +190,14 @@ int main(int argc, char const *argv[])
         }
     }
     double tempo_busca_h_div = finaliza_tempo();
-
+    destruir(&t, B);
     // limpa a tabela hash com hash por divisão
 
 
 
 
     // cria tabela hash com hash por divisão
-
+    criar(&t, B);
     // inserção dos dados na tabela hash usando hash por multiplicação
     inicia_tempo();
     for (int i = 0; i < N; i++) {
@@ -208,10 +215,17 @@ int main(int argc, char const *argv[])
         }
     }
     double tempo_busca_h_mul = finaliza_tempo();
-
+    destruir(&t, B);
     // limpa a tabela hash com hash por multiplicação
 
-
+    for(int i=0; i<N; i++){
+      free(insercoes[i]);
+    }
+    free(insercoes);
+    for(int i=0; i<M; i++){
+      free(consultas[i]);
+    }
+    free(consultas);
 
     printf("Hash por Divisao\n");
     printf("Colisoes na insercao: %d\n", colisoes_h_div);
