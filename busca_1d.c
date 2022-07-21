@@ -78,34 +78,13 @@ int main(int argc, char const *argv[])
         for(j = i; j<N; j++){
             if(entradas[j]<= menor){
                 menor = entradas[j];
-                pos = j;
-                if(menor == 49874){
-                    printf("%d %d\n", i, menor);
-                }
-                
+                pos = j; 
             }   
-        }
-        if(i == 40726){
-            printf( "antes %d troca com %d - menor: %d - i: %d\n",  entradas[i],  entradas[pos], menor, i);
         }
         entradas[pos] = entradas[i];
         entradas[i] = menor;
-        if(i == 40726){
-            printf("%d troca com %d - menor: %d - i: %d\n",  entradas[i],  entradas[pos], menor, i);
-            
-        }
-        int flag = 0;
-        for(int j = 0; j<N; j++){
-            if(entradas[j] == 49874){
-                flag = 1;
-            }
-        }
     }
-    for(int j = 0; j<N; j++){
-            if(entradas[j] == 49874){
-                printf("encontrou o num");
-            }
-    }
+
     // criar tabela de indice
     FILE * entrada_ord = fopen("dados/entradas_ord.txt","w");
     FILE * encontrados_ind = fopen("dados/encontrados_ind.txt","w");
