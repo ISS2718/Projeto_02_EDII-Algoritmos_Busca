@@ -226,8 +226,8 @@ int main(int argc, char const *argv[])
     unsigned encontrados_h_div = 0;
     unsigned encontrados_h_mul = 0;
 
-    string* insercoes = ler_strings("strings_entrada.txt", N);
-    string* consultas = ler_strings("strings_busca.txt", M);
+    string* insercoes = ler_strings("dados/strings_entrada.txt", N);
+    string* consultas = ler_strings("dados/strings_busca.txt", M);
 
 
     // cria tabela hash com hash por divisão
