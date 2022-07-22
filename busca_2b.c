@@ -130,8 +130,8 @@ int main(int argc, char const *argv[])
     unsigned colisoes = 0;
     unsigned encontrados = 0;
 
-    string* insercoes = ler_strings("dado/strings_entrada.txt", N);
-    string* consultas = ler_strings("dado/strings_busca.txt", M);
+    string* insercoes = ler_strings("dados/strings_entrada.txt", N);
+    string* consultas = ler_strings("dados/strings_busca.txt", M);
 
     // cria tabela hash com hash por hash duplo
     string *t;
