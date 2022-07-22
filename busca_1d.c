@@ -79,7 +79,6 @@ int main(int argc, char const *argv[])
             if(entradas[j]<= menor){
                 menor = entradas[j];
                 pos = j;
-                
             }   
         }
         entradas[pos] = entradas[i];
@@ -111,5 +110,9 @@ int main(int argc, char const *argv[])
     printf("Tempo de busca    :\t%fs\n", tempo_busca);
     printf("Itens encontrados :\t%d\n", encontrados);
 
+    free(entradas);
+    free(consultas);
+    free(indices);
+  
     return 0;
 }
