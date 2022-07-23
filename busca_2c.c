@@ -229,7 +229,6 @@ int main(int argc, char const *argv[])
     inicia_tempo();
     for (int i = 0; i < N; i++) {
         // inserir insercoes[i] na tabela hash
-        //printf("%s\n", insercoes[i]);
         colisoes_h_div += inserir_div(&t, B, insercoes[i]);
     }
     double tempo_insercao_h_div = finaliza_tempo();

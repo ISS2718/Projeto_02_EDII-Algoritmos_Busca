@@ -37,10 +37,8 @@ double finaliza_tempo()
 }
 
 int busca_seq_trans (int ** entrada, int buscado, int n){
-    //printf("Buscado: %d\n", buscado);
     for(int i=0; i<n; i++){
         if(buscado == (*entrada)[i]){
-            //printf("Encontrado na posicao %d\n", i-1);
             if(i != 0){
                 (*entrada)[i] = (*entrada)[i-1];
                 (*entrada)[i-1] = buscado;

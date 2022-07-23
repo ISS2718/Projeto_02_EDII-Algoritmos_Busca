@@ -47,16 +47,13 @@ int buscar_ind(int *indices, int *entradas, int buscado, int n, int s){
     if(buscado >= indices[t-1]){
         pos = t-1;
     }
-    //printf("%d no indices %d entre %d e %d\n", buscado, pos, indices[pos], indices[pos+1]);
     int inicio = pos*s;
     int fim = (pos+1)*s;
     for(int i = inicio; i<fim; i++){
         if(buscado == entradas[i]){
-            //printf("%d encontrado em %d\n", buscado, i);
             return i;
         }
     }
-    //printf("%d nao encontrado\n", buscado);
     return -1;
 }
 
@@ -97,7 +94,6 @@ int main(int argc, char const *argv[])
         int res = buscar_ind(indices, entradas, consultas[i], N, S);
         if(res != -1){
             encontrados++;
-            //fprintf(encontrados_ind, "%d\n", consultas[i]);
         }
     }
     double tempo_busca = finaliza_tempo();
