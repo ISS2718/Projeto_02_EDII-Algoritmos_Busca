@@ -37,10 +37,8 @@ double finaliza_tempo()
 }
 
 int busca_seq_mpf (int ** entrada, int buscado, int n){
-    //printf("Buscado: %d\n", buscado);
     for(int i=0; i<n; i++){
         if(buscado == (*entrada)[i]){
-            //printf("Encontrado na posicao %d\n", i);
             for(int k = i; k>0; k--){
                 (*entrada)[k] = (*entrada)[k-1];
             }
