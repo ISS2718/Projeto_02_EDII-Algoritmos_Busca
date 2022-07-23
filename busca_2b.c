@@ -92,11 +92,9 @@ int inserir_duplo(string ** t, unsigned B, string k) {
         int pos = h_duplo(x, i, B);
         if(strcmp((*t)[pos], "-1") == 0){// posicao nunca ocupada
             strcpy((*t)[pos], k);
-            //printf("Armazenou %s\n", (*t)[pos]);
             return colisoes;
         }
-        if(strcmp((*t)[pos], k) == 0 ){
-            //printf("Palavra %s ja cadastrada\n", (*t)[pos]);
+        if(strcmp((*t)[pos], k) == 0 ){//palavra ja cadastrada
             return colisoes;
         }
         //Se chegou aqui a posicao nao estava vazia e palavra nao era repetida => houve colisao
@@ -109,12 +107,10 @@ int buscar_duplo(string * t, unsigned B, string k){
     for(int i=0; i<B; i++){
         int x = converter(k);
         int pos = h_duplo(x, i, B);
-        if(strcmp(t[pos], k) == 0 ){
-            //printf("Palavra %s encontrada na posicao %d\n", t[pos], pos);
+        if(strcmp(t[pos], k) == 0 ){//palavra ja cadastrada
             return 0;
         }
-        if(strcmp(t[pos], "-1") == 0){//sao iguais -> posicao nunca ocupada ou palavra repetida
-            //printf("Palavra %s nao existe na lista\n", k);
+        if(strcmp(t[pos], "-1") == 0){//posicao nunca ocupada
             return -1;
         }
     }

@@ -86,11 +86,9 @@ int inserir_div(string ** t, int B, string k){
         int pos = h_div(x, i, B);
         if(strcmp((*t)[pos], "-1") == 0){// posicao nunca ocupada
             strcpy((*t)[pos], k);
-            //printf("Armazenou %s\n", (*t)[pos]);
             return colisoes;
         }
-        if(strcmp((*t)[pos], k) == 0 ){
-            //printf("Palavra %s ja cadastrada\n", (*t)[pos]);
+        if(strcmp((*t)[pos], k) == 0 ){ //palavra ja cadastrada
             return colisoes;
         }
         //Se chegou aqui a posicao nao estava vazia e palavra nao era repetida => houve colisao
@@ -103,12 +101,10 @@ int buscar_div(string * t, int B, string k){
     for(int i=0; i<B; i++){
         int x = converter(k);
         int pos = h_div(x, i, B);
-        if(strcmp(t[pos], k) == 0 ){
-            //printf("Palavra %s encontrada na posicao %d\n", t[pos], pos);
+        if(strcmp(t[pos], k) == 0 ){//palavra ja cadastrada
             return 0;
         }
-        if(strcmp(t[pos], "-1") == 0){//sao iguais -> posicao nunca ocupada ou palavra repetida
-            //printf("Palavra %s nao existe na lista\n", k);
+        if(strcmp(t[pos], "-1") == 0){//posicao nunca ocupada 
             return -1;
         }
     }
@@ -122,11 +118,9 @@ int inserir_mul(string ** t, int B, string k){
         int pos = h_mul(x, i, B);
         if(strcmp((*t)[pos], "-1") == 0){// posicao nunca ocupada
             strcpy((*t)[pos], k);
-            //printf("Armazenou %s\n", (*t)[pos]);
             return colisoes;
         }
-        if(strcmp((*t)[pos], k) == 0 ){
-            //printf("Palavra %s ja cadastrada\n", (*t)[pos]);
+        if(strcmp((*t)[pos], k) == 0 ){//palavra ja cadastrada
             return colisoes;
         }
         //Se chegou aqui a posicao nao estava vazia e palavra nao era repetida => houve colisao
@@ -139,12 +133,10 @@ int buscar_mul(string * t, int B, string k){
     for(int i=0; i<B; i++){
         int x = converter(k);
         int pos = h_mul(x, i, B);
-        if(strcmp(t[pos], k) == 0 ){
-            //printf("Palavra %s encontrada na posicao %d\n", t[pos], pos);
+        if(strcmp(t[pos], k) == 0 ){//palavra ja cadastrada
             return 0;
         }
-        if(strcmp(t[pos], "-1") == 0){//sao iguais -> posicao nunca ocupada ou palavra repetida
-            //printf("Palavra %s nao existe na lista\n", k);
+        if(strcmp(t[pos], "-1") == 0){//posicao nunca ocupada
             return -1;
         }
     }
@@ -175,7 +167,6 @@ int main(int argc, char const *argv[])
     inicia_tempo();
     for (int i = 0; i < N; i++) {
         // inserir insercoes[i] na tabela hash
-        //printf("%s\n", insercoes[i]);
         colisoes_h_div += inserir_div(&t, B, insercoes[i]);
     }
     double tempo_insercao_h_div = finaliza_tempo();
@@ -184,20 +175,18 @@ int main(int argc, char const *argv[])
     inicia_tempo();
     for (int i = 0; i < M; i++) {
         // buscar consultas[i] na tabela hash
-        //printf("%s\n", consultas[i]);
         if(buscar_div(t, B, consultas[i]) == 0){
             encontrados_h_div++;
         }
     }
     double tempo_busca_h_div = finaliza_tempo();
-    destruir(&t, B);
+    
     // limpa a tabela hash com hash por divisão
-
-
-
+    destruir(&t, B);
 
     // cria tabela hash com hash por divisão
     criar(&t, B);
+
     // inserção dos dados na tabela hash usando hash por multiplicação
     inicia_tempo();
     for (int i = 0; i < N; i++) {
@@ -215,9 +204,10 @@ int main(int argc, char const *argv[])
         }
     }
     double tempo_busca_h_mul = finaliza_tempo();
-    destruir(&t, B);
+    
     // limpa a tabela hash com hash por multiplicação
-
+    destruir(&t, B);
+    
     for(int i=0; i<N; i++){
       free(insercoes[i]);
     }

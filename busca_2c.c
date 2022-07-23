@@ -23,7 +23,6 @@ typedef struct el{
 } Elem;
 
 typedef Elem* Lista;
-//typedef struct Lista* Hash;
 
 unsigned converter(string s) {
    unsigned h = 0;
@@ -169,9 +168,7 @@ int inserir_div(Lista ***t, int B, string k){
     int colisoes = 0;
     int x = converter(k);
     int pos = h_div(x, B);
-    //printf("a");
     colisoes = insere_lista((*t)[pos], k);
-    //printf("Armazenou %s\n", (*((*t)[pos]))->texto);
 
     return colisoes;
 }
@@ -179,12 +176,10 @@ int inserir_div(Lista ***t, int B, string k){
 int buscar_div(Lista** t, int B, string k){
     int x = converter(k);
     int pos = h_div(x, B);
-    if(t[pos] == NULL){//sao iguais -> posicao nunca ocupada ou palavra repetida
-        //printf("Palavra %s nao existe na lista\n", k);
+    if(t[pos] == NULL){//posicao nunca ocupada 
         return -1;
     }
-    if(busca_lista((t)[pos], k) == 0 ){
-        //printf("Palavra %s encontrada na posicao %d\n", t[pos], pos);
+    if(busca_lista((t)[pos], k) == 0 ){//palavra ja cadastrada
         return 0;
     }
     return -1;
@@ -195,8 +190,6 @@ int inserir_mul(Lista *** t, int B, string k){
     int x = converter(k);
     int pos = h_mul(x, B);
     colisoes = insere_lista((*t)[pos], k);
-    //printf("Armazenou %s\n", (**t)[pos]->texto);
-
     return colisoes;
 }
 
@@ -204,11 +197,9 @@ int buscar_mul(Lista ** t, int B, string k){
     int x = converter(k);
     int pos = h_mul(x, B);
     if(t[pos] == NULL){//posicao nunca ocupada 
-        //printf("Palavra %s nao existe na lista\n", k);
         return -1;
     }
-    if(busca_lista((t)[pos], k) == 0 ){
-        //printf("Palavra %s encontrada na posicao %d\n", t[pos], pos);
+    if(busca_lista((t)[pos], k) == 0 ){//palavra ja cadastrada
         return 0;
     }
     return -1;
@@ -247,7 +238,6 @@ int main(int argc, char const *argv[])
     inicia_tempo();
     for (int i = 0; i < M; i++) {
         // buscar consultas[i] na tabela hash
-        //printf("%s\n", consultas[i]);
         if(buscar_div(t, B, consultas[i]) == 0){
             encontrados_h_div++;
         }

@@ -85,11 +85,6 @@ int main(int argc, char const *argv[])
         entradas[i] = menor;
     }
     // criar tabela de indice
-    //FILE * entrada_ord = fopen("dados/entradas_ord.txt","w");
-    //FILE * encontrados_ind = fopen("dados/encontrados_ind.txt","w");
-    /*for(int i = 0; i<N; i++){
-        fprintf(entrada_ord, "%d\n", entradas[i]);
-    }*/
     
     int * indices = calloc(T, sizeof(int));
     for(int i=0; i<T; i++){
