@@ -90,7 +90,7 @@ int inserir_duplo(string ** t, unsigned B, string k) {
     for(int i=0; i<B; i++){
         int x = converter(k);
         int pos = h_duplo(x, i, B);
-        if(strcmp((*t)[pos], "-1") == 0){// posicao nunca ocupada
+        if(strcmp((*t)[pos], "-1") == 0){//posicao nunca ocupada
             strcpy((*t)[pos], k);
             return colisoes;
         }
@@ -107,11 +107,11 @@ int buscar_duplo(string * t, unsigned B, string k){
     for(int i=0; i<B; i++){
         int x = converter(k);
         int pos = h_duplo(x, i, B);
-        if(strcmp(t[pos], k) == 0 ){//palavra ja cadastrada
-            return 0;
+        if(strcmp(t[pos], k) == 0 ){
+            return 0;//Encontrou
         }
-        if(strcmp(t[pos], "-1") == 0){//posicao nunca ocupada
-            return -1;
+        if(strcmp(t[pos], "-1") == 0){//sao iguais -> posicao nunca ocupada ou palavra repetida
+            return -1;//Nao cadastrado
         }
     }
     return -1;
@@ -159,9 +159,10 @@ int main(int argc, char const *argv[])
         free(consultas[i]);
     }
     free(consultas);
-
-    destruir(&t, B);
     
+    //limpa tabela hash
+    destruir(&t, B);
+
     printf("Colisoes na insercao: %d\n", colisoes);
     printf("Tempo de insercao   : %fs\n", tempo_insercao);
     printf("Tempo de busca      : %fs\n", tempo_busca);

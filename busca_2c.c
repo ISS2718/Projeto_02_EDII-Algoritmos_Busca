@@ -85,35 +85,38 @@ int insere_lista(Lista* li, string k) {
     Elem *no, *aux;
     int colisoes = 0;
 
-    if(li == NULL) {
+    if(li == NULL) {//Lista nao alocada
         return 0;
     }
-        
+
+    //Aloca memória para novo elemento    
     no =  malloc(sizeof(Elem));
     no->texto = malloc(sizeof(char)*25);
     strcpy(no->texto, k);
     no->prox = NULL;
     
-    if((*li) == NULL) { //lista vazia
+    if((*li) == NULL) { //Lista vazia
         *li = (Lista)no;
         return 0;
     }
 
     aux = *li;
     colisoes++;
-    if(strcmp(aux->texto, no->texto) != 0) {
-        while(aux->prox != NULL) {
+    if(strcmp(aux->texto, no->texto) != 0) {//Caso a palavra nao seja cadastrada no primeiro item da lista
+        while(aux->prox != NULL) {//Percorre a lista 
             aux = aux->prox;
-            if(strcmp(aux->texto, no->texto) == 0) {
+            if(strcmp(aux->texto, no->texto) == 0) {//Se a palavra for encontrada
+              //Desaloca a memoria 
               free(no->texto);
               free(no);
-              return 0;
+              return 0;//Retorna '0' colisoes
             }
             colisoes++;
         }
         aux->prox = no;
         return colisoes;
     }
+    //Caso falhe
     free(no->texto);
     free(no);
     return 0;    
@@ -122,19 +125,19 @@ int insere_lista(Lista* li, string k) {
 int busca_lista(Lista* li, string k) {
     Lista no = *li;
     
-    if(li == NULL) {
+    if(li == NULL) {//Lista nao alocada
         return -1;
     }
         
-    while(no != NULL && strcmp(no->texto, k) != 0){
+    while(no != NULL && strcmp(no->texto, k) != 0){//percorre lista procurando
         no = no->prox;
     }
 
-    if(no == NULL) {
+    if(no == NULL) {//Nao encontrado
         return -1;
     }
    
-    return 0;
+    return 0;//Encotrou
 }
 
 unsigned h_div(unsigned x, unsigned B)
@@ -169,20 +172,20 @@ int inserir_div(Lista ***t, int B, string k){
     int x = converter(k);
     int pos = h_div(x, B);
     colisoes = insere_lista((*t)[pos], k);
-
+    
     return colisoes;
 }
 
 int buscar_div(Lista** t, int B, string k){
     int x = converter(k);
     int pos = h_div(x, B);
-    if(t[pos] == NULL){//posicao nunca ocupada 
+    if(t[pos] == NULL){//sao iguais -> posicao nunca ocupada ou palavra repetida
         return -1;
     }
-    if(busca_lista((t)[pos], k) == 0 ){//palavra ja cadastrada
-        return 0;
+    if(busca_lista((t)[pos], k) == 0 ){
+        return 0;//Encontrou
     }
-    return -1;
+    return -1;//Nao encontrou
 }
 
 int inserir_mul(Lista *** t, int B, string k){
@@ -199,10 +202,10 @@ int buscar_mul(Lista ** t, int B, string k){
     if(t[pos] == NULL){//posicao nunca ocupada 
         return -1;
     }
-    if(busca_lista((t)[pos], k) == 0 ){//palavra ja cadastrada
-        return 0;
+    if(busca_lista((t)[pos], k) == 0 ){
+        return 0;//Encontrou
     }
-    return -1;
+    return -1;//Nao encontrou
 }
 
 int main(int argc, char const *argv[])
@@ -219,17 +222,15 @@ int main(int argc, char const *argv[])
 
     string* insercoes = ler_strings("dados/strings_entrada.txt", N);
     string* consultas = ler_strings("dados/strings_busca.txt", M);
-
+    Lista ** t;
 
     // cria tabela hash com hash por divisão
-    Lista ** t;
     criar_hash(&t, B);
 
     // inserção dos dados na tabela hash usando hash por divisão
     inicia_tempo();
     for (int i = 0; i < N; i++) {
         // inserir insercoes[i] na tabela hash
-        //printf("%s\n", insercoes[i]);
         colisoes_h_div += inserir_div(&t, B, insercoes[i]);
     }
     double tempo_insercao_h_div = finaliza_tempo();

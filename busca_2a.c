@@ -101,11 +101,11 @@ int buscar_div(string * t, int B, string k){
     for(int i=0; i<B; i++){
         int x = converter(k);
         int pos = h_div(x, i, B);
-        if(strcmp(t[pos], k) == 0 ){//palavra ja cadastrada
-            return 0;
+        if(strcmp(t[pos], k) == 0 ){
+            return 0;//Encontrou
         }
-        if(strcmp(t[pos], "-1") == 0){//posicao nunca ocupada 
-            return -1;
+        if(strcmp(t[pos], "-1") == 0){//sao iguais -> posicao nunca ocupada ou palavra repetida
+            return -1;//Nao cadastrada
         }
     }
     return -1;
@@ -133,11 +133,11 @@ int buscar_mul(string * t, int B, string k){
     for(int i=0; i<B; i++){
         int x = converter(k);
         int pos = h_mul(x, i, B);
-        if(strcmp(t[pos], k) == 0 ){//palavra ja cadastrada
-            return 0;
+        if(strcmp(t[pos], k) == 0 ){
+            return 0;//Encontrou
         }
-        if(strcmp(t[pos], "-1") == 0){//posicao nunca ocupada
-            return -1;
+        if(strcmp(t[pos], "-1") == 0){//sao iguais -> posicao nunca ocupada ou palavra repetida
+            return -1;//Nao encontrou
         }
     }
     return -1;
