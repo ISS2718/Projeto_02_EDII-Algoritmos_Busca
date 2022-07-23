@@ -1,3 +1,7 @@
+//João Pedro Gonçalves Ferreira - Nº USP: 12731314
+//Isaac Santos Soares - Nº USP: 12751713
+//Nicholas Estevão Pereira de Oliveira Rodrigues Bragança - Nº USP: 1268961
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
