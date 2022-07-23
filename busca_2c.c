@@ -203,7 +203,7 @@ int inserir_mul(Lista *** t, int B, string k){
 int buscar_mul(Lista ** t, int B, string k){
     int x = converter(k);
     int pos = h_mul(x, B);
-    if(t[pos] == NULL){//sao iguais -> posicao nunca ocupada ou palavra repetida
+    if(t[pos] == NULL){//posicao nunca ocupada 
         //printf("Palavra %s nao existe na lista\n", k);
         return -1;
     }
